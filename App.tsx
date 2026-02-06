@@ -9,52 +9,8 @@ import MessageInbox from './components/MessageInbox';
 import Footer from './components/Footer';
 import LoadingScreen from './components/LoadingScreen';
 
-const INITIAL_PRODUCTS: Product[] = [
-  {
-    id: '1',
-    name: 'Vintage Silk Blazer',
-    price: 3500,
-    category: 'Outerwear',
-    description: 'A timeless silhouette crafted from 100% genuine silk. Perfect for elevating a casual look or completing a formal ensemble.',
-    imageUrl: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&q=80&w=800',
-    condition: 'Excellent',
-    size: 'M',
-    createdAt: Date.now() - 1000000
-  },
-  {
-    id: '2',
-    name: 'Classic Baggy Denim',
-    price: 2800,
-    category: 'Baggy Jeans',
-    description: 'Authentic relaxed fit denim with that perfect 90s silhouette. These iconic jeans never go out of style.',
-    imageUrl: 'https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&q=80&w=800',
-    condition: 'Good',
-    size: '32W',
-    createdAt: Date.now() - 2000000
-  },
-  {
-    id: '3',
-    name: 'Retro Graphic Tee',
-    price: 1200,
-    category: 'T-Shirt',
-    description: 'Heavyweight cotton graphic tee with a unique vintage print. Oversized and comfortable.',
-    imageUrl: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=800',
-    condition: 'Excellent',
-    size: 'L',
-    createdAt: Date.now() - 3000000
-  },
-  {
-    id: '4',
-    name: 'Linen Button Down',
-    price: 1850,
-    category: 'Shirts',
-    description: 'Breathable linen shirt in a crisp ivory shade. Perfect for summer layering.',
-    imageUrl: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=800',
-    condition: 'Excellent',
-    size: 'M',
-    createdAt: Date.now() - 4000000
-  }
-];
+// All previous posts deleted as requested. Archive starts fresh.
+const INITIAL_PRODUCTS: Product[] = [];
 
 const App: React.FC = () => {
   const [view, setView] = useState<ViewState>('shop');
@@ -85,10 +41,9 @@ const App: React.FC = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  // Update storage whenever products change, even if the list is emptied.
   useEffect(() => {
-    if (products.length > 0) {
-      localStorage.setItem('amarthrift_products', JSON.stringify(products));
-    }
+    localStorage.setItem('amarthrift_products', JSON.stringify(products));
   }, [products]);
 
   useEffect(() => {
@@ -108,7 +63,6 @@ const App: React.FC = () => {
   };
 
   const handleAdminLogin = (password: string) => {
-    // Access system for staff - password updated to chuna420
     if (password === 'chuna420') {
       setIsAdminLoggedIn(true);
       return true;

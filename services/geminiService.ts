@@ -1,9 +1,8 @@
 
-import { GoogleGenAI, Type } from "@google/genai";
-
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+import { GoogleGenAI } from "@google/genai";
 
 export async function generateProductDescription(name: string, category: string, condition: string): Promise<string> {
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   try {
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
